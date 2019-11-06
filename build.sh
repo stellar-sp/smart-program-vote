@@ -6,7 +6,7 @@ if [ -z "$1" ]
     exit
 fi
 
-export IMAGE_NAME=mlkbenjamin/smart-program-vote:$1
+export IMAGE_NAME=smart-program/vote:$1
 
 docker build . --no-cache -t $IMAGE_NAME
 docker push $IMAGE_NAME

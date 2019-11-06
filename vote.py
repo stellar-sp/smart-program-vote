@@ -4,7 +4,6 @@ import os
 
 
 def vote(input_data, state_file):
-
     candidate_name = input_data["candidate_name"]
     voter = os.environ.get('SENDER')
 
@@ -34,9 +33,8 @@ def vote(input_data, state_file):
         json.dump(current_state_data, json_file)
 
 
-def get_votes(input_data):
-    state_file = input_data["state_file"]
-    candidate_name = input_data["arguments"][0]
+def get_votes(input_data, state_file):
+    candidate_name = input_data["candidate_name"]
 
     with open(state_file, "r") as json_file:
         json_data = json.load(json_file)
@@ -53,7 +51,7 @@ def start(input_file, state_file):
     if function == "vote":
         vote(input_data, state_file)
     elif function == "get_votes":
-        get_votes(input_data)
+        get_votes(input_data, state_file)
 
 
 if __name__ == '__main__':

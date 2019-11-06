@@ -2,6 +2,11 @@ from vote import *
 import tempfile
 import os
 
-state_file = tempfile.mkstemp()
+os.environ["SENDER"] = "test_user"
 
-start(os.getcwd() + "/input_file_sample.json", state_file[1])
+input_file = os.getcwd() + "/sample_setter_input_file.json"
+state_file = tempfile.mkstemp()
+start(input_file, state_file[1])
+
+input_file = os.getcwd() + "/sample_getter_input_file.json"
+start(input_file, state_file[1])
